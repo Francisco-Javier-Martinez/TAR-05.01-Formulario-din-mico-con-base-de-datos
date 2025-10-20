@@ -27,8 +27,10 @@
 
             $existe=$conexion->query($sql);
             if($existe->num_rows>0){
+                $conexion->close();
                 return true;
             }else{
+                $conexion->close();
                 return false;
             }
         }
