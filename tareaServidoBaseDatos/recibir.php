@@ -4,7 +4,7 @@
     $error = false; //Variable para poder sabir si dejo algo vacio o sin rellenar
     $usuarios = new Boletin_Usuario(); //Estancio el objeto Boletin_Usuario
     $animalUsuario = new Boletin_animales(); //Estancio el objeto Boletin_animal
-
+   
     if (empty($_POST['nombre'])) {
         echo '<h1>Se envió vacío el campo nombre</h1>';
         $error = true;
@@ -44,13 +44,7 @@
     if ($error) {
         echo '<a href="indexServidor.php"><h1>volver</h1></a>'; //Si falla algo de arriba monstrara este error
     }else{
-		$idUsu = $usuarios->meterUsuario( //Le paso todo los datos necesitarios para registrar al usuario
-		$_POST['nombre'],
-		$_POST['correoElectronico'],
-		$_POST['idioma'],
-		$_POST['comoConocio'],
-		$sugerencia
-		);
+		$idUsu = $usuarios->meterUsuario();
 		if($idUsu){ // si el id insertado seguimos
 			foreach($_POST['animales'] as $valor){ //Realizo un foreach de los animales repitiendo la consulta por cada animal que haya recibido
 			$animalUsuario->meterAnimalUsuario($idUsu,$valor); //Llamo a meter animal
