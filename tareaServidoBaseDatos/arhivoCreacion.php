@@ -65,7 +65,9 @@
 		ALTER TABLE boletin_usuario
 		ADD COLUMN sugerencias VARCHAR(150) NULL;";
 		// multi_query devuelve TRUE en éxito, o FALSE en fallo de la primera consulta
-		$conexion->multi_query($sql);
+		if($conexion->multi_query($sql)){
+			echo '<h1> Todo correcto</h1>';
+		}
 	} catch (mysqli_sql_exception $e) {
 		switch ($e->getCode()) {
 			case 1050:
